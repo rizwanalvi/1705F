@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace SMS
 {
@@ -17,7 +18,7 @@ namespace SMS
             // _sqlConn.Open();
         }
 
-        public List<Student> GetLoginTable()
+        public List<Student> GetStudentTable()
         {
             _sqlConn.Open();
             _loginTable = new List<Student>();
@@ -26,7 +27,8 @@ namespace SMS
             while (dReader.Read())
             {
 
-                _loginTable.Add(new Student {
+                _loginTable.Add(new Student
+                {
                     ID = dReader.GetInt32(0),
                     StudentName = dReader.GetString(1),
                     FatherName = dReader.GetString(2),
