@@ -22,5 +22,18 @@ namespace WebHRM
                 Response.Write("Hmhahha Data insert ho gaya");
             }
         }
+
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            if (new LoginDb().UserAuthentication(Login1.UserName,Login1.Password)) {
+                Login1.FailureText = "Ok";
+                Response.Redirect("~/MoviesDetails.aspx");
+            }
+            else
+            {
+                Login1.FailureText = "Invalid User";
+
+            }
+        }
     }
 }

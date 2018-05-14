@@ -64,6 +64,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Studentdb.cs" />
+    <Compile Include="_1705FdbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_1705FdbDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +94,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_1705FdbDataSet.xsc">
+      <DependentUpon>_1705FdbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_1705FdbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_1705FdbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_1705FdbDataSet.xss">
+      <DependentUpon>_1705FdbDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

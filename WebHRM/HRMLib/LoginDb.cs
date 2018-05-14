@@ -1,33 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.SqlClient;
-namespace WebHRM.Models
+﻿namespace HRMLib
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Data.SqlClient;
     public class LoginDb
     {
         SqlConnection _sqlConn = null;
         List<Login> _loginData = null;
-        public LoginDb() {
+        public LoginDb()
+        {
             _sqlConn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=HMR_DB;Integrated Security=False;User ID=sa;Password=sa9;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             _sqlConn.Open();
         }
 
-        public List<Login> GetLoginTable() {
+        public List<Login> GetLoginTable()
+        {
             _loginData = new List<Login>();
-            SqlCommand _cmd = new SqlCommand("SELECT * FROM Login",_sqlConn);
+            SqlCommand _cmd = new SqlCommand("SELECT * FROM Login", _sqlConn);
             SqlDataReader dReader = _cmd.ExecuteReader();
-            while (dReader.Read()) {
-                _loginData.Add(new Login { ID = dReader.GetInt32(0),UNAME = dReader.GetString(1),UPASS = dReader.GetString(2),ROLEID= dReader.GetString(3) });
-                    
+            while (dReader.Read())
+            {
+                _loginData.Add(new Login { ID = dReader.GetInt32(0), UNAME = dReader.GetString(1), UPASS = dReader.GetString(2), ROLEID = dReader.GetString(3) });
+
             }
 
             return _loginData;
         }
-        public int AddLoginInfo(Login lg) {
+        public int AddLoginInfo(Login lg)
+        {
             SqlCommand _cmd = new SqlCommand("INSERT INTO LOGIN(UNAME,UPASS,ROLEID) VALUES(@UNAME,@UPASS,@ROLEID)", _sqlConn);
-            _cmd.Parameters.AddWithValue("@UNAME",lg.UNAME);
+            _cmd.Parameters.AddWithValue("@UNAME", lg.UNAME);
             _cmd.Parameters.AddWithValue("@UPASS", lg.UPASS);
             _cmd.Parameters.AddWithValue("@ROLEID", lg.ROLEID);
             return _cmd.ExecuteNonQuery();
@@ -36,7 +44,7 @@ namespace WebHRM.Models
         {
             SqlCommand _cmd = new SqlCommand("DELETE FROM LOGIN WHERE ID = @ID", _sqlConn);
             _cmd.Parameters.AddWithValue("@ID", Id);
-          
+
             return _cmd.ExecuteNonQuery();
         }
         public int UpdateLoginInfo(Login lg)
@@ -47,20 +55,6 @@ namespace WebHRM.Models
             _cmd.Parameters.AddWithValue("@UPASS", lg.UPASS);
             _cmd.Parameters.AddWithValue("@ROLEID", lg.ROLEID);
             return _cmd.ExecuteNonQuery();
-        }
-        public bool UserAuthentication(String uName,String uPass) {
-            bool _flag = false;
-            SqlCommand _cmd = new SqlCommand();
-            _cmd.Connection = _sqlConn;
-            _cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE UNAME = @UNAME AND UPASS = @UPASS";
-            _cmd.Parameters.AddWithValue("@UNAME", uName);
-            _cmd.Parameters.AddWithValue("@UPASS", uPass);
-
-           var _value =  _cmd.ExecuteScalar();
-            if (int.Parse(_value.ToString()) > 0)
-                    _flag = true;
-
-            return _flag;
         }
     }
 }
