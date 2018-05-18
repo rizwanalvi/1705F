@@ -1,0 +1,18 @@
+﻿@model MVCAUTHORIZATION.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (@Html.BeginForm())
+{
+
+    @Html.DisplayFor(model => model.UserName)
+    @Html.EditorFor(model => model.UserName)
+
+    @Html.DisplayFor(model => model.passWord)
+    @Html.EditorFor(model => model.passWord)
+    <input type="submit" name="name" value="Login" />
+
+}
+
