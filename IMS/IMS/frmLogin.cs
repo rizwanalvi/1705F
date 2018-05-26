@@ -24,6 +24,7 @@ namespace IMS
             if (_logindata.LoginValidation(new Login { UNAME = textBox1.Text,UPASS=textBox2.Text}) > 0)
             {
                 this.Hide();
+              
             }
             else {
                 MessageBox.Show("Invalid User Name and Password");

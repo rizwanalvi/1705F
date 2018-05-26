@@ -13,9 +13,11 @@ namespace IMS
 {
     public partial class Form1 :Form
     {
+       
         public Form1()
         {
             InitializeComponent();
+          
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,6 +26,13 @@ namespace IMS
             fLogin.MdiParent = this;
             fLogin.Show();
 
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            frmManagProduct fProduct = new frmManagProduct();
+            fProduct.MdiParent = this;
+            fProduct.Show();
         }
     }
 }
