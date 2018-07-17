@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="715*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel  Grid.Column="0" Orientation="Horizontal" Grid.Row="0" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="Teal" />
+            </StackPanel.Background>
+
+            <Button  Content="ImageView"  Width="200" Click="OnClick"/>
+        </StackPanel>
+        <Frame x:Name="mainWindow" Grid.Row="1" Background="Gray"></Frame>
+
+    </Grid>
+</Page>

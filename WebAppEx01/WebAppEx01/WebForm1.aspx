@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowEditing="OnRowEditing">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowEditing="OnRowEditing" Width="100%">
             <Columns>
                 <asp:BoundField DataField="StdID" HeaderText="STUDENT ID" ReadOnly="true" />
                 <asp:BoundField DataField="StdName" HeaderText="STUDENT NAME" />
@@ -28,6 +28,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        <br />
     </div>
     </form>
 </body>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -22,5 +23,6 @@ namespace WebAppEx01.Models
             _lst.Add(new Student() { StdID = 1004, StdName = "Salman", BatchNo = 1705, TimeSlot = "F", IsAttended = false });
             return _lst;
         }
+        
     }
 }

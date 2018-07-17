@@ -14,6 +14,7 @@ namespace WebAppEx01
             LoadGridView();
 
         }
+       
         public void LoadGridView() {
 
             Student std = new Student();
@@ -28,7 +29,10 @@ namespace WebAppEx01
 
         protected void OnUpdate(object sender, EventArgs e)
         {
-
+            LinkButton btnUpdate = (LinkButton) sender;
+            GridViewRow dRow = (GridViewRow) btnUpdate.NamingContainer;
+          TextBox tb =  dRow.Cells[1].Controls[0] as TextBox;
+            String data = tb.Text;
         }
 
         protected void OnCancel(object sender, EventArgs e)
