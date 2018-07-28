@@ -13,16 +13,22 @@ namespace WebAppGudiance
         String strConn = ConfigurationManager.ConnectionStrings["dbGuide"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) { 
+
             SqlConnection _conn = new SqlConnection(strConn);
             _conn.Open();
             SqlCommand _cmd = new SqlCommand();
             _cmd.Connection = _conn;
-            _cmd.CommandText = "SELECT DISTINCT(PROG_NAME) FROM UN_PROGRAMS";
+                _cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                // _cmd.CommandText = "SELECT DISTINCT(PROG_NAME) FROM UN_PROGRAMS";
+                _cmd.CommandText = "spGetProgram";            
             DropDownList1.DataSource = _cmd.ExecuteReader();
             DropDownList1.DataTextField = "PROG_NAME";
             DropDownList1.DataValueField = "PROG_NAME";
             DropDownList1.DataBind();
             _conn.Close();
+
+            }
 
         }
 
@@ -46,6 +52,20 @@ namespace WebAppGudiance
 
 
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection _conn = new SqlConnection(strConn);
+            _conn.Open();
+            SqlCommand _cmd = new SqlCommand();
+            _cmd.Connection = _conn;
+            _cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            // _cmd.CommandText = "SELECT DISTINCT(PROG_NAME) FROM UN_PROGRAMS";
+            _cmd.CommandText = "spInsertUni";
+            _cmd.Parameters.AddWithValue("@UNAME",TextBox1.Text);
+            _cmd.ExecuteNonQuery();
         }
     }
 }

@@ -22,6 +22,11 @@
         </asp:GridView>
     
     </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <BR/>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="upload" />
+        <br />
+        <br />
     </form>
 </body>
 </html>
