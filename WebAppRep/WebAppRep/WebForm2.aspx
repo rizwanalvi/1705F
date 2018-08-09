@@ -13,6 +13,7 @@
             <HeaderTemplate>
                  <table border="1" style="width:100%">
             <tr>
+                 <th ></th>
                 <th>NAME</th>
                 <th>COUNTRY</th>
                 <th>MODIFY</th>
@@ -20,12 +21,21 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
+                     <td> 
+                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("CustomerId") %>' Visible="false"></asp:Label>
+                    
+                </td>
                 <td> 
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Name") %>' Visible="false"></asp:TextBox>
                 </td>
                 <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("Country") %>'></asp:Label>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("Country") %>' Visible="false"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList1" runat="server" Visible="false">
+                        <asp:ListItem>Pakistan</asp:ListItem>
+                        <asp:ListItem>Russia</asp:ListItem>
+                        <asp:ListItem>China</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
                 <td>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="OnEditing">Edit</asp:LinkButton>

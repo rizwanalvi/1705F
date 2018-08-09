@@ -33,10 +33,13 @@ namespace WebAppRep
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
             item.FindControl("LinkButton4").Visible = true;
             item.FindControl("LinkButton1").Visible = false;
+            item.FindControl("LinkButton2").Visible = false;
+            item.FindControl("LinkButton3").Visible = true;
             item.FindControl("TextBox1").Visible = true;
             item.FindControl("TextBox2").Visible = true;
             item.FindControl("Label1").Visible = false;
             item.FindControl("Label2").Visible = false;
+            item.FindControl("DropDownList1").Visible = true;
 
         }
 
@@ -47,21 +50,39 @@ namespace WebAppRep
 
         protected void OnCancel(object sender, EventArgs e)
         {
-
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+            item.FindControl("LinkButton4").Visible = false;
+            item.FindControl("LinkButton2").Visible = true;
+            item.FindControl("LinkButton1").Visible = true;
+            item.FindControl("LinkButton3").Visible = false;
+            item.FindControl("TextBox1").Visible = false;
+            item.FindControl("TextBox2").Visible = false;
+            item.FindControl("Label1").Visible = true;
+            item.FindControl("Label2").Visible = true;
+            item.FindControl("DropDownList1").Visible = false;
         }
 
        
 
         protected void OnUpdating(object sender, EventArgs e)
         {
-            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
-            item.FindControl("LinkButton4").Visible = false;
-            item.FindControl("LinkButton1").Visible = true;
-            item.FindControl("TextBox1").Visible = false;
-            item.FindControl("TextBox2").Visible = false;
-            item.FindControl("Label1").Visible = true;
-            item.FindControl("Label2").Visible = true;
+           // Label3
+               RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+            TextBox txtName = (TextBox)item.FindControl("TextBox1");
+            TextBox txtCountry = (TextBox)item.FindControl("TextBox2");
+            DropDownList lstCounties = item.FindControl("DropDownList1") as DropDownList;
+            String _Name = txtName.Text;
+            String _Country = txtCountry.Text;
+            Label lbId = item.FindControl("Label3") as Label;
+            SqlConnection _Conn = new SqlConnection(@"Data Source=FACULTY18;Initial Catalog=CUSTOMERINFO;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            _Conn.Open();
+            SqlCommand _cmd = new SqlCommand("UPDATE CUSTOMERS SET NAME =@NAME,COUNTRY=@COUNTRY WHERE CustomerId = @ID", _Conn);
+            _cmd.Parameters.AddWithValue("@NAME",_Name);
+            _cmd.Parameters.AddWithValue("@COUNTRY", lstCounties.SelectedItem.Value);
+            _cmd.Parameters.AddWithValue("@ID", lbId.Text);
+            _cmd.ExecuteNonQuery();
 
+            DataBinder();
         }
     }
 }
