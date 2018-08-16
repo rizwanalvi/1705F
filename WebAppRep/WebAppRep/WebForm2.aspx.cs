@@ -68,6 +68,9 @@ namespace WebAppRep
         {
            // Label3
                RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
+
+
+
             TextBox txtName = (TextBox)item.FindControl("TextBox1");
             TextBox txtCountry = (TextBox)item.FindControl("TextBox2");
             DropDownList lstCounties = item.FindControl("DropDownList1") as DropDownList;
