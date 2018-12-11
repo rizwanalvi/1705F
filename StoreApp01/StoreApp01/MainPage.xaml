@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="StoreApp01.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StoreApp01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Goldenrod" />
+        </Style>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="150" Grid.Column="0" >
+            <StackPanel.Background>
+                <!-- <SolidColorBrush Color="BlanchedAlmond"/> -->
+                <ImageBrush ImageSource="assets/profile.jpg" />
+            </StackPanel.Background>
+            <Button x:Name="button" Content="Image View" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Click="button_Click" />
+            <Button x:Name="button1" Content="Web View" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button1_Click"/>
+
+
+
+        </StackPanel>
+        <Frame x:Name="frmMainWindow" Content="Frame" Grid.Column="1" Background="Gray"/>
+
+    </Grid>
+</Page>
